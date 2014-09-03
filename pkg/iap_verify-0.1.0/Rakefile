@@ -8,7 +8,7 @@ Echoe.new('iap_verify', '0.1.0') do |p|
   p.author         = "WF|Todor Panev"
   p.email          = "toshe@webfactory.mk"
   p.ignore_pattern = ["tmp/*", "script/*"]
-  p.development_dependencies = []
+  p.dependencies =[ 'venice'] 
 end
 
 Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
