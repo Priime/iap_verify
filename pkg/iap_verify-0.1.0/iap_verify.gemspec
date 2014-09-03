@@ -7,14 +7,14 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
-  s.authors = ["Todor Panev"]
+  s.authors = ["WF|Todor Panev"]
   s.date = "2014-09-03"
   s.description = "Verify in app purchase"
   s.email = "toshe@webfactory.mk"
-  s.extra_rdoc_files = ["lib/iap_verify.rb"]
-  s.files = ["Manifest", "Rakefile", "iap_verify.gemspec", "lib/iap_verify.rb"]
-  s.homepage = "https://github.com/tpanev/WFiapVerify"
-  s.rdoc_options = ["--line-numbers", "--title", "Iap_verify"]
+  s.extra_rdoc_files = ["LICENSE", "README.md", "lib/iap_verify.rb", "lib/iap_verify/receipt.rb", "lib/iap_verify/verify.rb"]
+  s.files = ["LICENSE", "Manifest", "README.md", "Rakefile", "iap_verify.gemspec", "init.rb", "lib/iap_verify.rb", "lib/iap_verify/receipt.rb", "lib/iap_verify/verify.rb"]
+  s.homepage = "https://github.com/WebFactoryMk/iap_verify"
+  s.rdoc_options = ["--line-numbers", "--title", "Iap_verify", "--main", "README.md"]
   s.rubyforge_project = "iap_verify"
   s.rubygems_version = "2.3.0"
   s.summary = "Verify in app purchase"

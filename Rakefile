@@ -4,8 +4,8 @@ require 'echoe'
 
 Echoe.new('iap_verify', '0.1.0') do |p|
   p.description    = "Verify in app purchase"
-  p.url            = "https://github.com/tpanev/WFiapVerify"
-  p.author         = "Todor Panev"
+  p.url            = "https://github.com/WebFactoryMk/iap_verify"
+  p.author         = "WF|Todor Panev"
   p.email          = "toshe@webfactory.mk"
   p.ignore_pattern = ["tmp/*", "script/*"]
   p.development_dependencies = []
