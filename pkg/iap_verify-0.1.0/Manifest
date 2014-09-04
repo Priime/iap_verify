@@ -5,4 +5,4 @@ Rakefile
 iap_verify.gemspec
 init.rb
 lib/iap_verify.rb
-lib/iap_verify/receipt.rb
+lib/iap_verify/receipt_ios7.rb

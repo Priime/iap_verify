@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["WF|Todor Panev"]
-  s.date = "2014-09-03"
+  s.date = "2014-09-04"
   s.description = "Verify in app purchase"
   s.email = "toshe@webfactory.mk"
   s.extra_rdoc_files = ["LICENSE", "README.md", "lib/iap_verify.rb", "lib/iap_verify/receipt_ios7.rb"]
