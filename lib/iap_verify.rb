@@ -1,2 +1,2 @@
-require 'receipt'
-require 'verify'
+require 'venice'
+require 'receipt_ios7'
