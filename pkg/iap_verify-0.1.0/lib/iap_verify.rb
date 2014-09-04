@@ -1,2 +1,2 @@
 require 'venice'
-require 'receipt_ios7'
+require 'iap_verify/receipt_ios7'
