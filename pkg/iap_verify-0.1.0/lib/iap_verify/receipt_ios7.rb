@@ -3,12 +3,10 @@ require 'venice'
 module IapVerify
   class Receipt_iOS7
 
-    attr_reader :environment
     attr_reader :application_version
     attr_reader :bundle_id
     attr_accessor :in_app
     attr_reader :receipt_type
-    attr_reader :status
     attr_reader :original_purchase_date
     attr_reader :original_application_version
     attr_reader :original_transaction_id
@@ -20,27 +18,29 @@ module IapVerify
     attr_reader :quantity
 
     def initialize(attributes = {})
-      @environment = attributes['environment']
-      @application_version = attributes['application_version']
-      @bundle_id = attributes['bundle_id']
-      @receipt_type = attributes['receipt_type']
-      @status = Integer(attributes['status'])
-      @original_purchase_date = DateTime.parse(attributes['original_purchase_date']) if attributes['original_purchase_date']
-      @original_application_version = attributes['original_application_version']
-      @original_transaction_id = attributes['original_transaction_id']
-      @request_date = DateTime.parse(attributes['request_date']) if attributes['purchase_date']
+
+      @original_application_version = attributes['original_application_version'] if attributes['original_application_version']
+      @application_version = attributes['application_version'] if attributes['application_version']
+      @bundle_id = attributes['bundle_id'] if attributes['bundle_id']
+      @receipt_type = attributes['receipt_type'] if attributes['receipt_type']
+      @request_date = DateTime.parse(attributes['request_date']) if attributes['request_date']
+
 
       if attributes['in_app']
         @in_app = Array.new
         attributes['in_app'].each do |purchase|
-          @in_app << Receipt.new(purchase)
+          @in_app << Receipt_iOS7.new(purchase)
         end
-      end
+       end
 
-      if !attributes['in_app']
+      @original_purchase_date = DateTime.parse(attributes['original_purchase_date']) if attributes['original_purchase_date']
+
+
+      if attributes != nil & attributes['in_app'].nil?
         @is_trial_period = attributes['is_trial_period'] if attributes['is_trial_period']
+        @original_transaction_id = attributes['original_transaction_id'] if attributes['original_transaction_id']
         @product_id = attributes['product_id'] if attributes['product_id']
-        @purchase_date = attributes['purchase_date'] if attributes['purchase_date']
+        @purchase_date = DateTime.parse(attributes['purchase_date']) if attributes['purchase_date']
         @transaction_id = attributes['transaction_id'] if attributes['transaction_id']
         @quantity =  Integer(attributes['quantity']) if attributes['quantity']
       end
@@ -48,19 +48,17 @@ module IapVerify
 
     def to_h
       {
-          :environment => @environment,
           :bundle_id => @bundle_id,
           :receipt_type => @receipt_type,
-          :status => @status,
           :original_transaction_id => (@original_transaction_id.transaction_id rescue nil),
           :original_purchase_date => (@original_purchase_date.purchase_date.httpdate rescue nil),
           :in_app => @in_app.map{ |purchase| {is_trial_period: purchase.is_trial_period,
                                               product_id: purchase.product_id,
-                                              purchase_date: purchase.purchase_date,
-                                              transaction_id: purchase.transaction_id,
+                                              purchase_date: (purchase.purchase_date.httpdate rescue nil),
+                                              transaction_id: (purchase.transaction_id rescue nil),
                                               quantity: purchase.quantity,
-                                              original_purchase_date: purchase.original_purchase_date,
-                                              original_transaction_id: purchase.original_transaction_id
+                                              original_purchase_date: (purchase.original_purchase_date.httpdate rescue nil),
+                                              original_transaction_id: (purchase.original_transaction_id rescue nil)
                                               }
           }
       }
@@ -71,22 +69,23 @@ module IapVerify
     end
 
     class << self
+
       def verify(data, options = {})
-        verify!(data, options) rescue false
+        verify!(data, options) #rescue false
       end
 
       def verify!(data, options = {})
-        client = Client.production
+        client = IapVerify::Client.development
 
         begin
           client.verify!(data, options)
         rescue VerificationError => error
           case error.code
             when 21007
-              client = Client.development
+              client = IapVerify::Client.development
               retry
             when 21008
-              client = Client.production
+              client = IapVerify::Client.production
               retry
             else
               raise error

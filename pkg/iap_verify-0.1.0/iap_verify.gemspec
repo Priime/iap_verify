@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
   s.date = "2014-09-04"
   s.description = "Verify in app purchase"
   s.email = "toshe@webfactory.mk"
-  s.extra_rdoc_files = ["LICENSE", "README.md", "lib/iap_verify.rb", "lib/iap_verify/receipt_ios7.rb"]
-  s.files = ["LICENSE", "Manifest", "README.md", "Rakefile", "iap_verify.gemspec", "init.rb", "lib/iap_verify.rb", "lib/iap_verify/receipt_ios7.rb"]
+  s.extra_rdoc_files = ["LICENSE", "README.md", "lib/iap_verify.rb", "lib/iap_verify/client.rb", "lib/iap_verify/receipt_ios7.rb"]
+  s.files = ["LICENSE", "Manifest", "README.md", "Rakefile", "iap_verify.gemspec", "init.rb", "lib/iap_verify.rb", "lib/iap_verify/client.rb", "lib/iap_verify/receipt_ios7.rb"]
   s.homepage = "https://github.com/WebFactoryMk/iap_verify"
   s.rdoc_options = ["--line-numbers", "--title", "Iap_verify", "--main", "README.md"]
   s.rubyforge_project = "iap_verify"
