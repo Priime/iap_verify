@@ -7,6 +7,9 @@ Based on Venice gem https://github.com/nomad/Venice. Venice does not work with i
 
 Just an update on parsing. 
 
+## Usage
+    gem install iap_verify
+
 ## Installation
 
 ```ruby
@@ -15,9 +18,5 @@ Just an update on parsing.
     p receipt.to_h
   end
 ```
-
-
-## Usage
-    gem install iap_verify
 
 
