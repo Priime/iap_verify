@@ -13,10 +13,10 @@ Just an update on parsing.
 ## Installation
 
 ```ruby
-  data = "(Base64-Encoded Receipt Data)"
-  if receipt = IapVerify::Receipt_iOS7.verify(data)
+data = "(Base64-Encoded Receipt Data)"
+if receipt = IapVerify::Receipt_iOS7.verify(data)
     p receipt.to_h
-  end
+end
 ```
 
 
