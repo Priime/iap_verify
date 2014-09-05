@@ -7,11 +7,17 @@ Based on Venice gem https://github.com/nomad/Venice. Venice does not work with i
 
 Just an update on parsing. 
 
-data = "(Base64-Encoded Receipt Data)"
-if receipt = IapVerify::Receipt_iOS7.verify(data)
-  p receipt.to_h
-end
+## Installation
 
-gem install iap_verify
+```ruby
+  data = "(Base64-Encoded Receipt Data)"
+  if receipt = IapVerify::Receipt_iOS7.verify(data)
+    p receipt.to_h
+  end
+```
+
+
+## Usage
+    gem install iap_verify
 
 
