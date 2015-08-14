@@ -75,7 +75,7 @@ module IapVerify
       end
 
       def verify!(data, options = {})
-        client = IapVerify::Client.development
+        client = IapVerify::Client.production
 
         begin
           client.verify!(data, options)
